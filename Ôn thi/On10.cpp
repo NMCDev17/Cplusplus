@@ -1,0 +1,72 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+
+void NhapMang(int a[],int &n)
+{
+	while(n<1 || n>100)
+	{
+		cout<<"Nhap lai so luong phan tu trong mang thoa man 1<n<100 :";cin>>n;
+	}
+	for(int i=0;i<n;i++)
+	{
+		cout<<"a["<<i<<"]:";cin>>a[i];
+	}
+}
+void XuatMang(int a[],int &n)
+{
+	cout<<"Mang vua nhap la:";
+	for(int i=0;i<n;i++)
+	{
+		cout<<a[i]<<"\t";
+	}
+}
+bool KiemTraNTo(int n)
+{
+	if(n<2)
+	{
+		return false;
+	}
+	else
+	{
+		for(int i=2;i<=sqrt(n);i++)
+		{
+			if(n%i==0)
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+}
+float GtriTBCacPhanTuAm(int a[],int n)
+{
+	int dem=0;
+	float avg=0;
+	for(int i=0;i<n;i++)
+	{
+		if(KiemTraNTo(a[i]))
+		{
+			avg+=a[i];
+			dem++;
+		}
+	}
+	if(dem==0)
+	{
+		return 0;
+	}
+	else
+	return avg/dem;
+}
+
+int main()
+{
+	int a[100];
+	int n;
+	cout<<"Nhap vao so luong phan tu trong mang:";cin>>n;
+	NhapMang(a,n);
+	XuatMang(a,n);
+	float kq=GtriTBCacPhanTuAm(a,n);
+	cout<<"\nGtri TB cac phan tu nguyen to trong mang="<<kq;
+return 0;
+}
